@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use App\Models\PostCard;
 
 class PostCardController extends Controller
 {
@@ -22,5 +23,9 @@ class PostCardController extends Controller
             'postal_code' => 'required',
             'message' => 'required'
         ]);
+
+        PostCard::create($validated);
+
+        return back();
     }
 }

@@ -59,23 +59,45 @@
                         </div>
                     </div>
 
-                    <!-- Preview section -->
                     <div class="w-1/2 bg-blue-400 p-10 flex flex-col justify-center">
-                        <div class="bg-white rounded shadow p-8">
-                            <p class="text-lg whitespace-pre-line">{{ form.message }}</p>
+                        <h3 class="text-white text-opacity-60 text-center mb-5 text-2xl font-bold"> Preview </h3>
+                        <div class="relative bg-white rounded shadow p-8 w-[500px] h-[300px] overflow-hidden">
+                            <div class="absolute inset-0 flex">
+                                <div class="w-1/2 flex items-center justify-center px-4 overflow-hidden">
+                                    <p class="text-gray-700 whitespace-pre-line break-words overflow-hidden overflow-ellipsis">
+                                        {{ form.message }}
+                                    </p>
+                                </div>
+                                <div class="border-l border-gray-400 h-full"></div>
+                                <div class="absolute top-6 right-6 bg-gray-200 w-12 h-16 border border-gray-300 rounded-sm">
+                                </div>
+                            </div>
                         </div>
                         <div class="flex justify-center gap-4 mt-6">
-                            <button class="px-4 py-1 bg-gray-700 text-white rounded">Front</button>
-                            <button class="px-4 py-1 bg-white rounded">Back</button>
+                            <div class="inline-flex bg-white rounded p-1">
+                                <button type="button" @click="selected = 'front'"
+                                    :class="selected === 'front' ? 'bg-gray-600 text-white' : 'text-gray-700'"
+                                    class="text-xs font-bold rounded-2xl px-6 py-2 uppercase focus:outline-none">
+                                    Front
+                                </button>
+
+                                <button type="button" @click="selected = 'back'"
+                                    :class="selected === 'back' ? 'bg-gray-600 text-white' : 'text-gray-700'"
+                                    class="text-xs font-bold rounded-2xl px-6 py-2 uppercase focus:outline-none">
+                                    Back
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="sticky bg-gray-100 w-full py-4 px-6 flex justify-end gap-4">
-                    <button type="submit" class="px-6 py-1 uppercase text-sm font-semibold bg-blue-400 text-white rounded">
+                    <button type="submit"
+                        class="px-6 py-1 uppercase text-sm font-semibold bg-blue-400 text-white rounded">
                         Save
                     </button>
 
-                    <button type="button" class="px-6 py-1 bg-white uppercase text-sm font-semibold border rounded text-gray-700">
+                    <button type="button"
+                        class="px-6 py-1 bg-white uppercase text-sm font-semibold border rounded text-gray-700">
                         Copy Link
                     </button>
                 </div>
@@ -91,15 +113,19 @@ import InputError from '@/Components/InputError.vue'
 import PrimaryButton from '@/Components/PrimaryButton.vue'
 
 import { Head, useForm } from '@inertiajs/vue3';
+import { ref } from 'vue';
 
 const form = useForm({
-  recipient_name: '',
-  address1: '',
-  address2: '',
-  city: '',
-  state: '',
-  postal_code: '',
-  message: ''
+    recipient_name: '',
+    address1: '',
+    address2: '',
+    city: '',
+    state: '',
+    postal_code: '',
+    message: `Hey Babs,
+
+Check out this crazy photo from New York! I hope to see you soon!`
 });
 
+const selected = ref('front');
 </script>
