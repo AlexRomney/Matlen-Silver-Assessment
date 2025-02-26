@@ -1,5 +1,4 @@
 <template>
-
     <Head title="Post Card" />
 
     <div class="bg-gray-100 min-h-screen">
@@ -82,8 +81,7 @@
                         <div class="relative bg-white rounded shadow p-8 w-[500px] h-[300px] overflow-hidden">
                             <div v-if="selected === 'front'" class="absolute inset-0 flex">
                                 <div class="w-1/2 flex items-center justify-center px-4 overflow-hidden">
-                                    <p
-                                        class="text-gray-700 whitespace-pre-line break-words overflow-hidden overflow-ellipsis">
+                                    <p class="text-gray-700 whitespace-pre-line break-words overflow-hidden overflow-ellipsis">
                                         {{ form.message }}
                                     </p>
                                 </div>
