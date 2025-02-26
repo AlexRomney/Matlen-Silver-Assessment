@@ -96,6 +96,11 @@
                                 <img v-if="imagePreview" :src="imagePreview" alt="Uploaded image"
                                     class="object-cover w-full h-full" />
                                 <span v-else class="text-gray-400">Upload image</span>
+
+                                <div v-if="form.cover_text"
+                                    class="absolute bottom-2 right-2 text-white font-bold px-3 py-1 text-3xl max-w-[90%] break-words">
+                                    {{ form.cover_text }}
+                                </div>
                             </div>
                         </div>
                         <div class="flex justify-center gap-4 mt-6">

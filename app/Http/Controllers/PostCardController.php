@@ -8,7 +8,7 @@ use App\Models\PostCard;
 
 class PostCardController extends Controller
 {
-    public function index()
+    public function show()
     {
         return Inertia::render('PostCard');
     }
@@ -25,6 +25,13 @@ class PostCardController extends Controller
             'cover_text' => 'nullable|string',
             'image' => 'nullable|image|max:4096|mimes:png,jpg,jpeg'
         ]);
+
+        if ($request->hasFile('image')) {
+
+            $path = $request->file('image')->store('post-cards', 'public');
+
+            $validated['image'] = $path;
+        }
 
         PostCard::create($validated);
 
