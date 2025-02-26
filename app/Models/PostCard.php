@@ -14,6 +14,7 @@ class PostCard extends Model
         'state',
         'postal_code',
         'message',
-        'image'
+        'image',
+        'cover_text'
     ];
 }
